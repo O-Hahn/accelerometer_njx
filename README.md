@@ -10,9 +10,10 @@ The application was created by
 ## Docker build Dockerfile taken from: https://nextjs.org/docs/deployment
 
 Build image:
-docker `build . -t sensor-app`
+`docker build . -t sensor-app`
 
-Run image  `docker run -p 3000:3000 --name sensor-app sensor-app`
+Run image:
+`docker run -p 3000:3000 --name sensor-app sensor-app`
 
 
 
@@ -73,6 +74,14 @@ kubernetes deploayment. https://cloud.ibm.com/devops/setup/deploy?repository=htt
 https://cloud.ibm.com/docs/IoT?topic=IoT-api_overview
 https://docs.internetofthings.ibmcloud.com/apis/swagger/index.html
 https://docs.internetofthings.ibmcloud.com/apis/swagger/v0002/http-messaging.html#/Devices%20and%20gateways/post_device_types__typeId__devices__deviceId__events__eventName_
+
+
+# Kalman Filter
+https://stackoverflow.com/questions/47210512/using-pykalman-on-raw-acceleration-data-to-calculate-position
+https://ltroj.medium.com/low-cost-sensor-data-collection-in-the-field-using-your-smartphone-and-a-little-python-d7a7a9ea7b91
+
+https://towardsdatascience.com/sensor-fusion-part-1-kalman-filter-basics-4692a653a74c
+https://towardsdatascience.com/sensor-fusion-part-2-kalman-filter-code-78b82c63dcd
 
 # Getting Started with Create React App
 

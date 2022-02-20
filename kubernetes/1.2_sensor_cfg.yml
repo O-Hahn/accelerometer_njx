@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: sensor-config
+  namespace: sensor-app
+data:
+  SERVER_URL: "http://127.0.0.1:3000"
