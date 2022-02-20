@@ -95,14 +95,34 @@ const Train = () => {
     
     const handleSend = async () => {
         console.log("Send");
+        // let req = {
+        //     url: nodeRedUrl,
+        //     dataObj: dataObj,
+        // }
+        // let response = await fetch('/api/TrainNR', {
+        //     method: 'POST',
+        //     body: JSON.stringify(req),
+        // });
+
+        let orgId = "ygbety";
+        let devType = "Raspy";
+        let devId = "raspi-sim";
+        let eventType = "motion";
+        let token = "tjbotsim";
+
+        var iotUrl = "https://" + orgId + ".messaging.internetofthings.ibmcloud.com/api/v0002/device/types/" + devType + "/devices/" + devId + "/events/" + eventType;
+
+
         let req = {
-            url: nodeRedUrl,
+            url: iotUrl,
             dataObj: dataObj,
+            token: token
         }
-        let response = await fetch('/api/TrainReq', {
+        let response = await fetch('/api/TrainIOT', {
             method: 'POST',
             body: JSON.stringify(req),
         });
+
 
     };
 

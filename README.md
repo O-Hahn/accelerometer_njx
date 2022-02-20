@@ -29,6 +29,20 @@ In order to send data from a browser to a Node Red http input node, Node Red has
 
 # IBM Cloud Toolchain Deployment
 
+https://www.ibm.com/cloud/architecture/toolchains/develop-kubernetes-app-toolchain
+https://www.ibm.com/garage/method/practices/deliver/tool_delivery_pipeline
+https://www.ibm.com/cloud/architecture/tutorials/use-develop-kubernetes-app-toolchain?task=2
+
+https://cloud.ibm.com/docs/ContinuousDelivery?topic=ContinuousDelivery-deliverypipeline_about#deploy_stage
+
+??? https://github.com/IBM/deploy-react-kubernetes/blob/master/README.md
+??? https://developer.ibm.com/tutorials/custom-toolchain-with-devops/
+??? https://thomas-suedbroecker.gitbook.io/toolchain-one-microservice/deploy-the-authors-microservice-to-ibm-cloud/lab6
+??? https://ibm.github.io/get-your-java-microservice-up-and-running/exercise-03/
+??? https://github.com/open-toolchain/sdk/wiki/Creating-Custom-Toolchain-Templates
+
+
+
 kubernetes deploayment. https://cloud.ibm.com/devops/setup/deploy?repository=https%3A%2F%2Feu-de.git.cloud.ibm.com%2Fopen-toolchain%2Fsecure-kube-toolchain&topic=ContinuousDelivery-getting-started&env_id=ibm%3Ayp%3Aeu-de&source_provider=githubconsolidated
 
 1) Create a new empty toolchain
@@ -47,7 +61,11 @@ kubernetes deploayment. https://cloud.ibm.com/devops/setup/deploy?repository=htt
     `cd build &&`  
     `cf push -f manifest.yml`  
 
+# IOT Paltform API
 
+https://cloud.ibm.com/docs/IoT?topic=IoT-api_overview
+https://docs.internetofthings.ibmcloud.com/apis/swagger/index.html
+https://docs.internetofthings.ibmcloud.com/apis/swagger/v0002/http-messaging.html#/Devices%20and%20gateways/post_device_types__typeId__devices__deviceId__events__eventName_
 
 # Getting Started with Create React App
 

@@ -1,9 +1,9 @@
 export default async function handler(req, res) {
-    console.log("TrainReq.handler");
+    console.log("TrainNR.handler");
     console.log(req);
     switch (req.method) {
         case 'POST': {
-            await sendTrainReq(req, res);
+            await sendTrainNR(req, res);
             return;
         }
 
@@ -15,12 +15,12 @@ export default async function handler(req, res) {
 
 }
 
-async function sendTrainReq(req, res) {
+async function sendTrainNR(req, res) {
     try {
-        console.log("TrainReq.sendTrainReq()");
+        console.log("TrainNR.sendTrainNR()");
         let data = JSON.parse(req.body);
         let url = data.url;
-        console.log("train req url = " + url);
+        console.log("train NR req url = " + url);
 
         let rest = null;
         await fetch(url, {
@@ -43,7 +43,7 @@ async function sendTrainReq(req, res) {
         return res.json(result);    
         
     } catch (error) {
-        console.log("TrainReq.sendTrainReq() error: " + error);
+        console.log("TrainNR.sendTrainNR() error: " + error);
         return res.json({
             message: new Error(error).message,
             success: false,
