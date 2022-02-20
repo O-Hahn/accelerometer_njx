@@ -7,6 +7,13 @@ The application was created by
 
 `npx tailwindcss init -p`
 
+## Docker build Dockerfile taken from: https://nextjs.org/docs/deployment
+
+Build image:
+docker `build . -t sensor-app`
+
+Run image  `docker run -p 3000:3000 --name sensor-app sensor-app`
+
 
 
 # Node Red Scoring Flow
