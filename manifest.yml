@@ -1,0 +1,5 @@
+applications:
+- name: accel-app
+  buildpacks:
+  - nodejs_buildpack
+  memory: 1024M

@@ -13,7 +13,25 @@ Build image:
 `docker build . -t sensor-app`
 
 Run image:
+`docker rm sensor-app`
 `docker run -p 3000:3000 --name sensor-app sensor-app`
+
+`docker tag sensor-app:latest de.icr.io/fh-bgld/sensor-app:latest` 
+`docker push de.icr.io/fh-bgld/sensor-app:latest`
+
+`kubectl config set-context --current --namespace=sensor-app`
+`kubectl rollout restart deployment sensor-app-deployment`
+
+`kubectl delete deployment sensor-app-deployment`
+`kubectl apply -f ./kubernetes/2.1_sensor_deployment.yml `
+
+## IBM Cloud Foundry Deployment
+
+Buildpacks:
+`ibmcloud cf buildpacks`
+
+Deployment:
+`ibmcloud cf push -f manifest.yml`
 
 
 
@@ -75,6 +93,9 @@ https://cloud.ibm.com/docs/IoT?topic=IoT-api_overview
 https://docs.internetofthings.ibmcloud.com/apis/swagger/index.html
 https://docs.internetofthings.ibmcloud.com/apis/swagger/v0002/http-messaging.html#/Devices%20and%20gateways/post_device_types__typeId__devices__deviceId__events__eventName_
 
+# kubernetes
+https://stackoverflow.com/questions/40366192/kubernetes-how-to-make-deployment-to-update-image
+kubectl rollout restart deployment sensor-app-deployment
 
 # Kalman Filter
 https://stackoverflow.com/questions/47210512/using-pykalman-on-raw-acceleration-data-to-calculate-position
@@ -82,6 +103,7 @@ https://ltroj.medium.com/low-cost-sensor-data-collection-in-the-field-using-your
 
 https://towardsdatascience.com/sensor-fusion-part-1-kalman-filter-basics-4692a653a74c
 https://towardsdatascience.com/sensor-fusion-part-2-kalman-filter-code-78b82c63dcd
+
 
 # Getting Started with Create React App
 

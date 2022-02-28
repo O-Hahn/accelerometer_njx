@@ -7,10 +7,10 @@ const Train = () => {
     const [recording, setRecording] = useState(false);
     const [motionset, setMotionset] = useState("");
     const [key, setKey] = useState("");   
-    const [nodeRedUrl, setNodeRedUrl] = useState("https://node-red-fhbgld-2021-05-14.eu-de.mybluemix.net/train_motion");
     const [delay, setDelay] = useState(100);
     const [dataObj, setDataObj] = useState({dataArray: []});
-    const [sendOrientation, setSendOrientation] = useState(true);
+    const [sendOrientation, setSendOrientation] = useState(false);
+    const [appState, setAppState] = useState({});
 
     const handleAcceleration = (event) => {
         console.log("Handle acceleration")
@@ -77,6 +77,14 @@ const Train = () => {
 
     const handleStart = () => {
         console.log("Start");
+        if ( typeof( DeviceMotionEvent ) !== "undefined" && typeof( DeviceMotionEvent.requestPermission ) === "function" ) {
+            DeviceMotionEvent.requestPermission().then(response => {
+                if (response === 'granted') {
+                    console.log("accelerometer permission granted");
+                    // Do stuff here
+                }
+            });  
+        }
         let now = new Date();
         setMotionset(now.toISOString());
         setRecording(true);
@@ -104,19 +112,11 @@ const Train = () => {
         //     body: JSON.stringify(req),
         // });
 
-        let orgId = "ygbety";
-        let devType = "Raspy";
-        let devId = "raspi-sim";
-        let eventType = "motion";
-        let token = "tjbotsim";
-
-        var iotUrl = "https://" + orgId + ".messaging.internetofthings.ibmcloud.com/api/v0002/device/types/" + devType + "/devices/" + devId + "/events/" + eventType;
-
 
         let req = {
-            url: iotUrl,
+            url: appState.iotUrl,
             dataObj: dataObj,
-            token: token
+            token: appState.iotToken,
         }
         let response = await fetch('/api/TrainIOT', {
             method: 'POST',
@@ -125,6 +125,18 @@ const Train = () => {
 
 
     };
+
+    useEffect(() => {
+        const appStateJson = localStorage.getItem("SensorApp.State");
+    
+        if (appStateJson) {            
+            let stateObj = JSON.parse(appStateJson);
+            console.log(appState);
+            setAppState(stateObj);
+        }
+   
+      //eslint-disable-next-line
+      }, [])
 
     useEffect(() => {
         console.log("Use effect");
@@ -155,8 +167,8 @@ const Train = () => {
         <h1 className="text-lg font-bold mt-4 border-b-2">Training</h1>
         <div className="mt-4 w-full">
             <div className="flex">
-                <div className="w-1/6 text-right pr-5 text-gray-600">Node Red URL:</div>
-                <div className="w-5/6 font-medium">{nodeRedUrl}</div>
+                <div className="w-1/6 text-right pr-5 text-gray-600">IOT URL:</div>
+                <div className="w-5/6 text-sm">{appState.iotUrl}</div>
             </div>
 
             <div className="flex mt-2 items-center">
@@ -191,7 +203,6 @@ const Train = () => {
                         className="bg-indigo-500 hover:bg-indigo-800 text-white font-bold py-2 px-4 rounded inline-flex items-center w-32"
                         onClick={handleStop}
                     >
-                        <Image className="filter-white" src="/Stop.svg" width="30" height="30" alt="Start" />
                         <span className="ml-4">STOP</span>
                     </button>
                 </div>           
@@ -202,7 +213,6 @@ const Train = () => {
                         className="bg-indigo-500 hover:bg-indigo-800 text-white font-bold py-2 px-4 rounded inline-flex items-center w-32"
                         onClick={handleStart}
                     >
-                        <Image className="filter-white" src="/Play.svg" width="30" height="30" alt="Start" />
                         <span className="ml-4">START</span>
                     </button>
                 </div>           
@@ -213,7 +223,6 @@ const Train = () => {
                     className="bg-indigo-500 hover:bg-indigo-800 text-white font-bold py-2 px-4 rounded inline-flex items-center w-32"
                     onClick={handleSend}
                 >
-                    <Image className="filter-white" src="/Send.svg" width="30" height="30" alt="Start" />
                     <span className="ml-4">SEND</span>
                 </button>
             </div>           
