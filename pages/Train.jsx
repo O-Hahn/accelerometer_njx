@@ -77,6 +77,8 @@ const Train = () => {
 
     const handleStart = () => {
         console.log("Start");
+
+        //for iPhones permisson must not be placed in on load useEffect code
         if ( typeof( DeviceMotionEvent ) !== "undefined" && typeof( DeviceMotionEvent.requestPermission ) === "function" ) {
             DeviceMotionEvent.requestPermission().then(response => {
                 if (response === 'granted') {
@@ -85,6 +87,7 @@ const Train = () => {
                 }
             });  
         }
+        
         let now = new Date();
         setMotionset(now.toISOString());
         setRecording(true);
