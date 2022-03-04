@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: community-ingress-resource
+  namespace: prod
+  annotations:
+    kubernetes.io/ingress.class: "public-iks-k8s-nginx"
+spec:
+  tls:
+  - hosts: 
+    - mycluster-eu-de-1-702185-93c663195df361da1284682bc210eb37-0000.eu-de.containers.appdomain.cloud
+    secretName: mycluster-eu-de-1-702185-93c663195df361da1284682bc210eb37-0000
+  rules:
+  - host: mycluster-eu-de-1-702185-93c663195df361da1284682bc210eb37-0000.eu-de.containers.appdomain.cloud
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service: 
+            name: kube-toolchain-20220301141553597
+            port:
+              number: 3000
