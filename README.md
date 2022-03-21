@@ -105,6 +105,10 @@ https://towardsdatascience.com/sensor-fusion-part-1-kalman-filter-basics-4692a65
 https://towardsdatascience.com/sensor-fusion-part-2-kalman-filter-code-78b82c63dcd
 
 
+https://machinelearningspace.com/2d-object-tracking-using-kalman-filter/
+https://medium.com/analytics-vidhya/exploring-data-acquisition-and-trajectory-tracking-with-android-devices-and-python-9fdef38f25ee
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
