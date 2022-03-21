@@ -4,7 +4,7 @@ const Navbar = (props) => {
     const {selected} = props;
      return (
 
-        <ul className="flex p-2 border bg-indigo-500 font-bold ">
+        <ul className="flex p-2 border bg-indigo-500 font-bold w-full">
             <li className="mr-6">
                 <Link href="/Train">
                     {selected === "/Train" ? (

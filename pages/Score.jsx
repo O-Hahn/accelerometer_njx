@@ -155,15 +155,15 @@ const Score = () => {
 
     return (
         <Layout  >
-            <h1 className="text-lg font-bold mt-4 border-b-2">Scoring</h1>
+            <h1 className="text-lg font-bold mt-4 ml-2 border-b-2">Scoring</h1>
             <div className="mt-4 w-full">
                 <div className="flex">
-                    <div className="w-1/6 text-right pr-5 text-gray-600">Node Red URL:</div>
-                    <div className="w-5/6 text-sm">{appState.nodeRedUrl}</div>
+                    <div className="w-2/6 text-right pr-5 text-gray-600">Node Red URL:</div>
+                    <div className="w-4/6 text-sm">{appState.nodeRedUrl}</div>
                 </div>
 
                 <div className="flex mt-2 items-center">
-                    <div className="w-1/6 text-right pr-5 text-gray-600">Delay:</div>
+                    <div className="w-2/6 text-right pr-5 text-gray-600">Delay:</div>
                     <input 
                         className=" rounded border border-gray-100 border-inherit border-2 hover:border-blue-100 mx-px hover:mx-0 hover:border-2 py-2.5 px-2 focus:mx-0 focus:border-2 focus:border-blue-100 focus:outline-0 pr-8"
                         type="text"
@@ -177,7 +177,7 @@ const Score = () => {
 
                 {recording ? (
                     <div className="flex mt-2">
-                        <div className="w-1/6"></div>
+                        <div className="w-2/6"></div>
                         <button 
                             className="bg-red-500 hover:bg-red-800 text-white font-bold py-2 px-4 rounded inline-flex items-center w-32"
                             onClick={handleStop}
@@ -188,7 +188,7 @@ const Score = () => {
                     </div>           
                 ) : (
                     <div className="flex mt-2">
-                        <div className="w-1/6"></div>
+                        <div className="w-2/6"></div>
                         <button 
                             className="bg-indigo-500 hover:bg-indigo-800 text-white font-bold py-2 px-4 rounded inline-flex items-center w-32"
                             onClick={handleStart}
@@ -199,7 +199,7 @@ const Score = () => {
                     </div>           
                 )}
                 <div className="flex mt-2">
-                    <div className="w-1/6"></div>
+                    <div className="w-2/6"></div>
                     <button 
                         className="bg-indigo-500 hover:bg-indigo-800 text-white font-bold py-2 px-4 rounded inline-flex items-center w-32"
                         onClick={handleSend}
@@ -212,12 +212,12 @@ const Score = () => {
                 {dataObj && (
                     <div>
                         <div className="flex mt-2">
-                            <div className="w-1/6 text-right pr-5 text-gray-600">Nr. of events:</div>
-                            <div className="w-5/6 font-medium">{dataObj.dataArray.length}</div>
+                            <div className="w-2/6 text-right pr-5 text-gray-600">Nr. of events:</div>
+                            <div className="w-4/6 font-medium">{dataObj.dataArray.length}</div>
                         </div>
                         <div className="flex mt-2">
-                            <div className="w-1/6 text-right pr-5 text-gray-600">Data:</div>
-                            <pre className="w-5/6 border m-2 p-2 h-96 overflow-scroll text-xs">
+                            <div className="w-2/6 text-right pr-5 text-gray-600">Data:</div>
+                            <pre className="w-4/6 border m-2 p-2 h-96 overflow-scroll text-xs">
                                 {JSON.stringify(dataObj, null, 2) }
                             </pre>
                         </div>

@@ -55,13 +55,13 @@ export default function Home() {
     <Layout>
         <div className="mb-16 w-full">
           <div className="flex mt-2">
-            <div className="w-1/6"></div>
-            <div className="ml-7 font-bold text-lg mt-4 w-full">Train settings - Watson IOT Foundation</div>
+            <div className="w-2/6"></div>
+            <div className="font-bold text-lg mt-4">Train settings - Watson IOT Foundation</div>
           </div>
           <div className="flex mt-2 items-center">
-              <div className="w-1/6 text-right pr-5 text-gray-600">Organization ID:</div>
+              <div className="w-2/6 text-right pr-5 text-gray-600">Organization ID:</div>
               <input 
-                    className="w-3/6 rounded border border-gray-100 border-inherit border-2 hover:border-blue-100 mx-px hover:mx-0 hover:border-2 py-2.5 px-2 focus:mx-0 focus:border-2 focus:border-blue-100 focus:outline-0 pr-8"
+                    className="w-4/6 rounded border border-gray-100 border-inherit border-2 hover:border-blue-100 mx-px hover:mx-0 hover:border-2 py-2.5 px-2 focus:mx-0 focus:border-2 focus:border-blue-100 focus:outline-0 pr-8"
                     type="search"
                     name="orgid" 
                     value={orgId}
@@ -69,9 +69,9 @@ export default function Home() {
               />
           </div>
           <div className="flex mt-2 items-center">
-              <div className="w-1/6 text-right pr-5 text-gray-600">Device type:</div>
+              <div className="w-2/6 text-right pr-5 text-gray-600">Device type:</div>
               <input 
-                    className="w-3/6 rounded border border-gray-100 border-inherit border-2 hover:border-blue-100 mx-px hover:mx-0 hover:border-2 py-2.5 px-2 focus:mx-0 focus:border-2 focus:border-blue-100 focus:outline-0 pr-8"
+                    className="w-4/6 rounded border border-gray-100 border-inherit border-2 hover:border-blue-100 mx-px hover:mx-0 hover:border-2 py-2.5 px-2 focus:mx-0 focus:border-2 focus:border-blue-100 focus:outline-0 pr-8"
                     type="search"
                     name="devType" 
                     value={devType}
@@ -79,9 +79,9 @@ export default function Home() {
               />
           </div>
           <div className="flex mt-2 items-center">
-              <div className="w-1/6 text-right pr-5 text-gray-600">Device ID:</div>
+              <div className="w-2/6 text-right pr-5 text-gray-600">Device ID:</div>
               <input 
-                    className="w-3/6 rounded border border-gray-100 border-inherit border-2 hover:border-blue-100 mx-px hover:mx-0 hover:border-2 py-2.5 px-2 focus:mx-0 focus:border-2 focus:border-blue-100 focus:outline-0 pr-8"
+                    className="w-4/6 rounded border border-gray-100 border-inherit border-2 hover:border-blue-100 mx-px hover:mx-0 hover:border-2 py-2.5 px-2 focus:mx-0 focus:border-2 focus:border-blue-100 focus:outline-0 pr-8"
                     type="search"
                     name="devId" 
                     value={devId}
@@ -89,9 +89,9 @@ export default function Home() {
               />
           </div>
           <div className="flex mt-2 items-center">
-              <div className="w-1/6 text-right pr-5 text-gray-600">Event Type:</div>
+              <div className="w-2/6 text-right pr-5 text-gray-600">Event Type:</div>
               <input 
-                    className="w-3/6 rounded border border-gray-100 border-inherit border-2 hover:border-blue-100 mx-px hover:mx-0 hover:border-2 py-2.5 px-2 focus:mx-0 focus:border-2 focus:border-blue-100 focus:outline-0 pr-8"
+                    className="w-4/6 rounded border border-gray-100 border-inherit border-2 hover:border-blue-100 mx-px hover:mx-0 hover:border-2 py-2.5 px-2 focus:mx-0 focus:border-2 focus:border-blue-100 focus:outline-0 pr-8"
                     type="search"
                     name="eventType" 
                     value={eventType}
@@ -99,9 +99,9 @@ export default function Home() {
               />
           </div>
           <div className="flex mt-2 items-center">
-              <div className="w-1/6 text-right pr-5 text-gray-600">Device Token:</div>
+              <div className="w-2/6 text-right pr-5 text-gray-600">Device Token:</div>
               <input 
-                    className="w-3/6 rounded border border-gray-100 border-inherit border-2 hover:border-blue-100 mx-px hover:mx-0 hover:border-2 py-2.5 px-2 focus:mx-0 focus:border-2 focus:border-blue-100 focus:outline-0 pr-8"
+                    className="w-4/6 rounded border border-gray-100 border-inherit border-2 hover:border-blue-100 mx-px hover:mx-0 hover:border-2 py-2.5 px-2 focus:mx-0 focus:border-2 focus:border-blue-100 focus:outline-0 pr-8"
                     type="password"
                     name="token" 
                     value={token}
@@ -109,20 +109,20 @@ export default function Home() {
               />
           </div>
           <div className="flex mt-2 items-center">
-              <div className="w-1/6 text-right pr-5 text-gray-600">IOT URL:</div>
-              <div className="w-3/6  text-sm mx-px hover:mx-0 py-2.5 px-2 pr-8">
+              <div className="w-2/6 text-right pr-5 text-gray-600">IOT URL:</div>
+              <div className="w-4/6  text-sm mx-px hover:mx-0 py-2.5 px-2 pr-8">
                 {iotUrl}
               </div>  
           </div>
 
           <div className="flex mt-2">
-            <div className="w-1/6"></div>
-            <div className="ml-7 font-bold text-lg mt-4 w-full">Scoring settings - Node Red</div>
+            <div className="w-2/6"></div>
+            <div className="font-bold text-lg mt-4">Scoring settings - Node Red</div>
           </div>
           <div className="flex mt-2 items-center">
-              <div className="w-1/6 text-right pr-5 text-gray-600">Node Red URL:</div>
+              <div className="w-2/6 text-right pr-5 text-gray-600">Node Red URL:</div>
               <input 
-                    className="w-3/6 rounded border border-gray-100 border-inherit border-2 hover:border-blue-100 mx-px hover:mx-0 hover:border-2 py-2.5 px-2 focus:mx-0 focus:border-2 focus:border-blue-100 focus:outline-0 pr-8"
+                    className="w-4/6 rounded border border-gray-100 border-inherit border-2 hover:border-blue-100 mx-px hover:mx-0 hover:border-2 py-2.5 px-2 focus:mx-0 focus:border-2 focus:border-blue-100 focus:outline-0 pr-8"
                     type="search"
                     name="nodeRedUrl" 
                     value={nodeRedUrl}
@@ -131,11 +131,11 @@ export default function Home() {
           </div>
 
           <div className="flex mt-2">
-            <div className="w-1/6"></div>
-            <div className="ml-7 font-bold text-lg mt-4 w-full">General settings</div>
+            <div className="w-2/6"></div>
+            <div className="font-bold text-lg mt-4">General settings</div>
           </div>
           <div className="flex mt-2 items-center">
-              <div className="w-1/6 text-right pr-5 text-gray-600">orientation data:</div>
+              <div className="w-2/6 text-right pr-5 text-gray-600">orientation data:</div>
                 <input 
                   type="checkbox" 
                   className="w-6 h-6"

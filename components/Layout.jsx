@@ -6,7 +6,7 @@ const Layout = ({ children }) => {
     const router = useRouter();
 
     return (
-        <div>
+        <div className="w-full">
             <Navbar selected={router.pathname}/>
 			<div className="flex w-full flex-col justify-between flex-1">
                 <main className="mx-1 flex-1">
