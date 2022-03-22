@@ -110,7 +110,7 @@ export default function Home() {
           </div>
           <div className="flex mt-2 items-center">
               <div className="w-2/6 text-right pr-5 text-gray-600">IOT URL:</div>
-              <div className="w-4/6  text-sm mx-px hover:mx-0 py-2.5 px-2 pr-8">
+              <div className="w-4/6  text-sm mx-px hover:mx-0 py-2.5 px-2 pr-8 overflow-x-auto">
                 {iotUrl}
               </div>  
           </div>

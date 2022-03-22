@@ -172,7 +172,7 @@ const Train = () => {
         <div className="mt-4 w-full">
             <div className="flex">
                 <div className="w-2/6 text-right pr-5 text-gray-600">IOT URL:</div>
-                <div className="w-4/6 text-sm">{appState.iotUrl}</div>
+                <div className="w-4/6 text-sm overflow-x-auto">{appState.iotUrl}</div>
             </div>
 
             <div className="flex mt-2 items-center">
