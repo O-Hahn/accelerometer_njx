@@ -10,6 +10,8 @@ const Score = () => {
     const [dataObj, setDataObj] = useState({dataArray: []});
     const [sendOrientation, setSendOrientation] = useState(false);
     const [appState, setAppState] = useState({});
+    const [pred, setPred] = useState("");
+
 
     const handleAcceleration = (event) => {
         console.log("Handle acceleration")
@@ -101,17 +103,34 @@ const Score = () => {
         setKey(k);
     };
     
+    // const handleSend = async () => {
+    //     console.log("Send");
+    //     let req = {
+    //         url: appState.nodeRedUrl,
+    //         dataObj: dataObj,
+    //     }
+    //     let response = await fetch('/api/ScoreNR', {
+    //         method: 'POST',
+    //         body: JSON.stringify(req),
+    //     });
+
+    // };
+
     const handleSend = async () => {
         console.log("Send");
         let req = {
-            url: appState.nodeRedUrl,
+            cloudApiKey: appState.cloudApiKey,
+            cloudRegion: appState.cloudRegion,
+            deploymentId: appState.deploymentId,
             dataObj: dataObj,
         }
-        let response = await fetch('/api/ScoreNR', {
+        let rsp = {};
+        await fetch('/api/ScoreML', {
             method: 'POST',
             body: JSON.stringify(req),
-        });
-
+        }).then(response => response.text()).then(dat => rsp = JSON.parse(dat));
+        console.log(rsp);
+        setPred(rsp.pred);
     };
 
     useEffect(() => {
@@ -207,7 +226,15 @@ const Score = () => {
                         <Image className="filter-white" src="/static/Send.svg" width="30" height="30" alt="Start" />
                         <span className="ml-4">SEND</span>
                     </button>
-                </div>           
+                </div>   
+                {pred && (
+                    <div>
+                        <div className="flex mt-2">
+                            <div className="w-2/6 text-right pr-5 text-gray-600">Prediction:</div>
+                            <div className="w-4/6 font-medium">{pred}</div>
+                        </div>
+                    </div>
+                )}        
 
                 {dataObj && (
                     <div>

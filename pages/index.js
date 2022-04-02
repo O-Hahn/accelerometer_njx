@@ -11,6 +11,9 @@ export default function Home() {
   const [iotUrl, setIotUrl] = useState("");
   const [nodeRedUrl, setNodeRedUrl] = useState("https://node-red-fhbgld-2021-05-14.eu-de.mybluemix.net/score_motion");
   const [sendOrientation, setSendOrientation] = useState(false);
+  const [cloudApiKey, setCloudApiKey] = useState('');
+  const [cloudRegion, setCloudRegion] = useState('eu-de');
+  const [deploymentId, setDeploymentId] = useState("185a733f-679b-41b0-9e75-87be45b17c5a");
 
 
   useEffect(() => {
@@ -19,12 +22,33 @@ export default function Home() {
     if (appStateJson) {            
         let stateObj = JSON.parse(appStateJson);
         console.log(stateObj);
-        setOrgId(stateObj.orgId);
-        setDevType(stateObj.devType);
-        setDevId(stateObj.devId);
-        setEventType(stateObj.eventType);
-        setNodeRedUrl(stateObj.nodeRedUrl);
-        setSendOrientation(stateObj.sendOrientation);
+        if (stateObj.orgId) {
+          setOrgId(stateObj.orgId);
+        }
+        if (stateObj.devType) {
+          setDevType(stateObj.devType);
+        }
+        if (stateObj.devId) {
+          setDevId(stateObj.devId);
+        }
+        if (stateObj.eventType) {
+          setEventType(stateObj.eventType);
+        }
+        if(stateObj.nodeRedUrl) {
+          setNodeRedUrl(stateObj.nodeRedUrl);
+        }
+        if(stateObj.sendOrientation) {
+          setSendOrientation(stateObj.sendOrientation);
+        }
+        if (stateObj.cloudApiKey) {
+          setCloudApiKey(stateObj.cloudApiKey);
+        }
+        if (stateObj.cloudRegion) {
+          setCloudRegion(stateObj.cloudRegion);
+        }
+        if (stateObj.deploymentId) {
+          setDeploymentId(stateObj.deploymentId);
+        }
     }
 
   //eslint-disable-next-line
@@ -44,12 +68,15 @@ export default function Home() {
       iotToken: token,
       nodeRedUrl: nodeRedUrl,
       sendOrientation: sendOrientation,
+      cloudApiKey: cloudApiKey,
+      cloudRegion: cloudRegion,
+      deploymentId: deploymentId
     }
 
     localStorage.setItem("SensorApp.State", JSON.stringify(appState));
 
   //eslint-disable-next-line
-  }, [orgId, devType, devId, eventType, token, nodeRedUrl, sendOrientation])
+  }, [orgId, devType, devId, eventType, token, nodeRedUrl, sendOrientation, cloudApiKey, cloudRegion, deploymentId])
 
   return (
     <Layout>
@@ -117,16 +144,36 @@ export default function Home() {
 
           <div className="flex mt-2">
             <div className="w-2/6"></div>
-            <div className="font-bold text-lg mt-4">Scoring settings - Node Red</div>
+            <div className="font-bold text-lg mt-4">Scoring settings - Machine Learning</div>
           </div>
           <div className="flex mt-2 items-center">
-              <div className="w-2/6 text-right pr-5 text-gray-600">Node Red URL:</div>
+              <div className="w-2/6 text-right pr-5 text-gray-600">Cloud API Key:</div>
+              <input 
+                    className="w-4/6 rounded border border-gray-100 border-inherit border-2 hover:border-blue-100 mx-px hover:mx-0 hover:border-2 py-2.5 px-2 focus:mx-0 focus:border-2 focus:border-blue-100 focus:outline-0 pr-8"
+                    type="password"
+                    name="cloudApiKey" 
+                    value={cloudApiKey}
+                    onChange={(e) => setCloudApiKey(e.target.value)}
+              />
+          </div>
+          <div className="flex mt-2 items-center">
+              <div className="w-2/6 text-right pr-5 text-gray-600">Cloud Region:</div>
               <input 
                     className="w-4/6 rounded border border-gray-100 border-inherit border-2 hover:border-blue-100 mx-px hover:mx-0 hover:border-2 py-2.5 px-2 focus:mx-0 focus:border-2 focus:border-blue-100 focus:outline-0 pr-8"
                     type="search"
-                    name="nodeRedUrl" 
-                    value={nodeRedUrl}
-                    onChange={(e) => setNodeRedUrl(e.target.value)}
+                    name="cloudRegion" 
+                    value={cloudRegion}
+                    onChange={(e) => setCloudRegion(e.target.value)}
+              />
+          </div>
+          <div className="flex mt-2 items-center">
+              <div className="w-2/6 text-right pr-5 text-gray-600">Deployment ID:</div>
+              <input 
+                    className="w-4/6 rounded border border-gray-100 border-inherit border-2 hover:border-blue-100 mx-px hover:mx-0 hover:border-2 py-2.5 px-2 focus:mx-0 focus:border-2 focus:border-blue-100 focus:outline-0 pr-8"
+                    type="search"
+                    name="deploymentId" 
+                    value={deploymentId}
+                    onChange={(e) => setDeploymentId(e.target.value)}
               />
           </div>
 
