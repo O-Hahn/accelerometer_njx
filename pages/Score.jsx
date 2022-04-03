@@ -21,6 +21,7 @@ const Score = () => {
         if(recording) {
             var data = {
                 device: "phone_1",
+                figure: "x",
                 motionset: motionset,
                 date: now.toISOString(),
                 timestamp: now.getTime(),
@@ -52,6 +53,7 @@ const Score = () => {
         if(recording) {
             var data = {
                 device: "phone_1",
+                figure: "x",
                 motionset: motionset,
                 date: now.toISOString(),
                 timestamp: now.getTime(),
