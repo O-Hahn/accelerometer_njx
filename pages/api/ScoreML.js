@@ -58,7 +58,7 @@ async function sendScoreML(req, res) {
                 'Content-Type': "application/json",
                 'Authorization': `Bearer ` + iamResp.access_token,
             },
-            body: bdy,
+            body: JSON.stringify(bdy),
         }).then(response => response.text()).then(dat => rest = JSON.parse(dat));
         console.log(util.inspect(rest, false, null, true /* enable colors */))
         let pred = null;

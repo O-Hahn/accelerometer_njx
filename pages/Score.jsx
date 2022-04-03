@@ -76,6 +76,7 @@ const Score = () => {
 
     const handleStart = () => {
         console.log("Start");
+        setPred(null);
 
         //for iPhones permisson must not be placed in on load useEffect code
         if ( typeof( DeviceMotionEvent ) !== "undefined" && typeof( DeviceMotionEvent.requestPermission ) === "function" ) {
