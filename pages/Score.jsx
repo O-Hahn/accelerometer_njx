@@ -11,6 +11,7 @@ const Score = () => {
     const [sendOrientation, setSendOrientation] = useState(false);
     const [appState, setAppState] = useState({});
     const [pred, setPred] = useState("");
+    const [mlUrl, setMlUrl] = useState("");
 
 
     const handleAcceleration = (event) => {
@@ -142,6 +143,8 @@ const Score = () => {
             console.log(appState);
             setAppState(stateObj);
             setSendOrientation(stateObj.sendOrientation);
+            let url = 'https://' + stateObj.cloudRegion + '.ml.cloud.ibm.com/ml/v4/deployments/' + stateObj.deploymentId + '/predictions?version=2021-01-02';
+            setMlUrl(url);
         }
    
       //eslint-disable-next-line
@@ -178,8 +181,8 @@ const Score = () => {
             <h1 className="text-lg font-bold mt-4 ml-2 border-b-2">Scoring</h1>
             <div className="mt-4 w-full">
                 <div className="flex">
-                    <div className="w-2/6 text-right pr-5 text-gray-600">Node Red URL:</div>
-                    <div className="w-4/6 text-sm  overflow-x-auto">{appState.nodeRedUrl}</div>
+                    <div className="w-2/6 text-right pr-5 text-gray-600">Machine Learning URL:</div>
+                    <div className="w-4/6 text-sm  overflow-x-auto">{mlUrl}</div>
                 </div>
 
                 <div className="flex mt-2 items-center">
@@ -228,14 +231,12 @@ const Score = () => {
                         <span className="ml-4">SEND</span>
                     </button>
                 </div>   
-                {pred && (
-                    <div>
-                        <div className="flex mt-2">
-                            <div className="w-2/6 text-right pr-5 text-gray-600">Prediction:</div>
-                            <div className="w-4/6 font-medium">{pred}</div>
-                        </div>
+                <div>
+                    <div className="flex mt-2">
+                        <div className="w-2/6 text-right pr-5 text-gray-600">Result:</div>
+                        <div className="w-4/6 font-medium">{pred}</div>
                     </div>
-                )}        
+                </div>
 
                 {dataObj && (
                     <div>
