@@ -3,11 +3,11 @@ import Layout from '../components/Layout'
 
 export default function Home() {
 
-  const [orgId, setOrgId] = useState("ygbety");
-  const [devType, setDevType] = useState("Raspy");
-  const [devId, setDevId] = useState("raspi-sim");
+  const [orgId, setOrgId] = useState("wb3i1b");
+  const [devType, setDevType] = useState("phone");
+  const [devId, setDevId] = useState("phone-web-app");
   const [eventType, setEventType] = useState("motion");
-  const [token, setToken] = useState("tjbotsim");
+  const [token, setToken] = useState("tjbotibm");
   const [iotUrl, setIotUrl] = useState("");
   const [nodeRedUrl, setNodeRedUrl] = useState("https://node-red-fhbgld-2021-05-14.eu-de.mybluemix.net/score_motion");
   const [sendOrientation, setSendOrientation] = useState(false);
