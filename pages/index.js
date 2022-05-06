@@ -13,7 +13,7 @@ export default function Home() {
   const [sendOrientation, setSendOrientation] = useState(false);
   const [cloudApiKey, setCloudApiKey] = useState('qPSIA1mip2TMdMh3Pq8HLgj-q4SUtkT5b8JcOAYjYep-');
   const [cloudRegion, setCloudRegion] = useState('us-south');
-  const [deploymentId, setDeploymentId] = useState("9b0d422f-c99a-4808-a5c2-cbb5b1a4b689");
+  const [deploymentId, setDeploymentId] = useState("54ff8c56-af10-4d6a-b548-5fb8059ac151");
 
 
   useEffect(() => {
