@@ -22,7 +22,8 @@ async function sendScoreML(req, res) {
         let data = JSON.parse(req.body);
         console.log(util.inspect(data, false, null, true /* enable colors */))
 
-        let iamTokenUrl = "https://iam." + data.cloudRegion + ".bluemix.net/identity/token";
+        // let iamTokenUrl = "https://iam." + data.cloudRegion + ".bluemix.net/identity/token";
+        let iamTokenUrl = "https://iam.cloud.ibm.com/identity/token";
         console.log("score ML iam url = " + iamTokenUrl);
         let iamResp = null;
         await fetch(iamTokenUrl, {
