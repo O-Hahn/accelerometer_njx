@@ -6,7 +6,7 @@ const Train = () => {
 
     const [recording, setRecording] = useState(false);
     const [motionset, setMotionset] = useState("");
-    const [key, setKey] = useState("");   
+    const [key, setKey] = useState("0");   
     const [delay, setDelay] = useState(100);
     const [dataObj, setDataObj] = useState({dataArray: []});
     const [sendOrientation, setSendOrientation] = useState(false);
@@ -106,6 +106,30 @@ const Train = () => {
     
     const handleSend = async () => {
         console.log("Send");
+        
+        if(appState.destination == "1") {
+            let req = {
+                url: appState.cloudantUrl,
+                dataObj: dataObj
+            }
+            let response = await fetch('/api/TrainCloudant', {
+                method: 'POST',
+                body: JSON.stringify(req),
+            });
+        }
+        else if (appState.destination == "2") {
+            let req = {
+                url: appState.iotUrl,
+                dataObj: dataObj,
+                token: appState.iotToken,
+            }
+            let response = await fetch('/api/TrainIOT', {
+                method: 'POST',
+                body: JSON.stringify(req),
+            });
+    
+        }
+
         // let req = {
         //     url: nodeRedUrl,
         //     dataObj: dataObj,
@@ -114,18 +138,6 @@ const Train = () => {
         //     method: 'POST',
         //     body: JSON.stringify(req),
         // });
-
-
-        let req = {
-            url: appState.iotUrl,
-            dataObj: dataObj,
-            token: appState.iotToken,
-        }
-        let response = await fetch('/api/TrainIOT', {
-            method: 'POST',
-            body: JSON.stringify(req),
-        });
-
 
     };
 
@@ -165,15 +177,30 @@ const Train = () => {
         // eslint-disable-next-line
     }, [recording, dataObj,sendOrientation]);
 
+    const onFigureChange = (value) => {
+        console.log('OnFigureChange:' + value)
+        setKey(value)
+      }
 
     return (
         <Layout  >
         <h1 className="text-lg font-bold mt-4 ml-2 border-b-2">Training</h1>
         <div className="mt-4 w-full">
-            <div className="flex">
-                <div className="w-2/6 text-right pr-5 text-gray-600">IOT URL:</div>
-                <div className="w-4/6 text-sm overflow-x-auto">{appState.iotUrl}</div>
-            </div>
+            { (appState.destination=="1" && <>
+                <div className="flex">
+                    <div className="w-2/6 text-right pr-5 text-gray-600">CloudantDB URL:</div>
+                    <div className="w-4/6 text-sm overflow-x-auto">{appState.cloudantUrl}</div>
+                </div></>
+                )}
+            {
+                (appState.destination=="2" &&<>
+                <div className="flex">
+                    <div className="w-2/6 text-right pr-5 text-gray-600">IoT URL:</div>
+                    <div className="w-4/6 text-sm overflow-x-auto">{appState.iotUrl}</div>
+                </div></>
+                )
+                
+            }
 
             <div className="flex mt-2 items-center">
                 <div className="w-2/6 text-right pr-5 text-gray-600">Delay:</div>
@@ -187,24 +214,33 @@ const Train = () => {
                 />
 
             </div>
-
             <div className="flex mt-2 items-center">
-                <div className="w-2/6 text-right pr-5 text-gray-600">Figure:</div>
-                <input 
-                    className=" rounded border border-gray-100 border-inherit border-2 hover:border-blue-100 mx-px hover:mx-0 hover:border-2 py-2.5 px-2 focus:mx-0 focus:border-2 focus:border-blue-100 focus:outline-0 pr-8"
-                    type="text"
-                    name="delay" 
-                    placeholder="figure"
-                    value={key}
-                    onChange={e => {setKey(e.target.value)}}
-                />
-
+                <div className="w-2/6 text-right pr-5 text-gray-600">Figure:</div> 
+                <div className="mb-3 xl:w-96">
+                <select onChange={(e) => onFigureChange(e.target.value)} className="form-select appearance-none
+                    block w-full px-3 py-1.5 text-base font-normal
+                    text-gray-700 bg-white bg-clip-padding bg-no-repeat
+                    border border-solid border-gray-300 rounded transition ease-in-out 
+                    m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Figure to train">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                </select>
+                </div>
             </div>
+
             {recording ? (
                 <div className="flex mt-2">
                     <div className="w-2/6"></div>
                     <button 
-                        className="bg-red-500 hover:bg-red-800 text-white font-bold py-2 px-4 rounded inline-flex items-center w-32"
+                        className="bg-red-500 hover:bg-red-800 text-white font-bold py-2 px-4 rounded inline-flex items-center w-64"
                         onClick={handleStop}
                     >
                         <Image className="filter-white" src="/static/Stop.svg" width="30" height="30" alt="Start" />
@@ -215,7 +251,7 @@ const Train = () => {
                 <div className="flex mt-2">
                     <div className="w-2/6"></div>
                     <button 
-                        className="bg-indigo-500 hover:bg-indigo-800 text-white font-bold py-2 px-4 rounded inline-flex items-center w-32"
+                        className="bg-indigo-500 hover:bg-indigo-800 text-white font-bold py-2 px-4 rounded inline-flex items-center w-64"
                         onClick={handleStart}
                     >
                         <Image className="filter-white" src="/static/Play.svg" width="30" height="30" alt="Start" />
@@ -223,16 +259,30 @@ const Train = () => {
                     </button>
                 </div>           
             )}
-            <div className="flex mt-2">
+
+            {dataObj.dataArray.length > 0 ? (
+                <div className="flex mt-2">
+                    <div className="w-2/6"></div>
+                    <button 
+                        className="bg-indigo-500 hover:bg-indigo-800 text-white font-bold py-2 px-4 rounded inline-flex items-center w-64"
+                        onClick={handleSend}
+                    >
+                        <Image className="filter-white" src="/static/Send.svg" width="30" height="30" alt="Start" />
+                        <span className="ml-4">SEND</span>
+                    </button>
+                    </div>
+            ) : (
+                <div className="flex mt-2">
                 <div className="w-2/6"></div>
-                <button 
-                    className="bg-indigo-500 hover:bg-indigo-800 text-white font-bold py-2 px-4 rounded inline-flex items-center w-32"
+                <button disabled
+                    className="disabled:bg-red-500 disabled:shadow-none disabled:text-slate-500 disabled:border-slate-200 bg-indigo-500 hover:bg-indigo-800 text-white font-bold py-2 px-4 rounded inline-flex items-center w-64"
                     onClick={handleSend}
                 >
                     <Image className="filter-white" src="/static/Send.svg" width="30" height="30" alt="Start" />
                     <span className="ml-4">SEND</span>
                 </button>
             </div>           
+            ) }
 
             {dataObj && (
                 <div>

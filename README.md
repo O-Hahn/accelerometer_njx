@@ -7,6 +7,8 @@ The application was created by
 
 `npx tailwindcss init -p`
 
+`npm install @headlessui/react @heroicons/react`
+
 ## Docker build Dockerfile taken from: https://nextjs.org/docs/deployment
 
 Build image:

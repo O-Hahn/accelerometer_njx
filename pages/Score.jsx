@@ -190,7 +190,7 @@ const Score = () => {
                 <div className="flex mt-2 items-center">
                     <div className="w-2/6 text-right pr-5 text-gray-600">Delay:</div>
                     <input 
-                        className=" rounded border border-gray-100 border-inherit border-2 hover:border-blue-100 mx-px hover:mx-0 hover:border-2 py-2.5 px-2 focus:mx-0 focus:border-2 focus:border-blue-100 focus:outline-0 pr-8"
+                        className="rounded border border-gray-100 border-inherit border-2 hover:border-blue-100 mx-px hover:mx-0 hover:border-2 py-2.5 px-2 focus:mx-0 focus:border-2 focus:border-blue-100 focus:outline-0 pr-8"
                         type="text"
                         name="delay" 
                         placeholder="delay in ms"
@@ -207,7 +207,7 @@ const Score = () => {
                             className="bg-red-500 hover:bg-red-800 text-white font-bold py-2 px-4 rounded inline-flex items-center w-32"
                             onClick={handleStop}
                         >
-                            <Image className="filter-white" src="/static/Stop.svg" width="30" height="30" alt="Start" />
+                            <Image className="filter-white" src="/static/Stop.svg" width="60" height="40" alt="Start" />
                             <span className="ml-4">STOP</span>
                         </button>
                     </div>           
@@ -219,7 +219,7 @@ const Score = () => {
                             onClick={handleStart}
                         >
                             <Image className="filter-white" src="/static/Play.svg" width="30" height="30" alt="Start" />
-                            <span className="ml-4">START</span>
+                            <span className="ml-6">START</span>
                         </button>
                     </div>           
                 )}
@@ -230,13 +230,14 @@ const Score = () => {
                         onClick={handleSend}
                     >
                         <Image className="filter-white" src="/static/Send.svg" width="30" height="30" alt="Start" />
-                        <span className="ml-4">SEND</span>
+                        <span className="ml-6">SEND</span>
                     </button>
                 </div>   
+  
                 <div>
                     <div className="flex mt-2">
-                        <div className="w-2/6 text-right pr-5 text-gray-600">Result:</div>
-                        <div className="w-4/6 font-medium">{pred}</div>
+                        <div className="w-2/6 text-2xl text-right pr-5 text-gray-600">Result:</div>
+                        <div className="w-4/6 rounded border border-gray-100 border-inherit border-2 text-2xl text-gray-900">{pred}</div>
                     </div>
                 </div>
 
