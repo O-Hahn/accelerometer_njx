@@ -190,7 +190,7 @@ const Score = () => {
                 <div className="flex mt-2 items-center">
                     <div className="w-2/6 text-right pr-5 text-gray-600">Delay:</div>
                     <input 
-                        className="rounded border border-gray-100 border-inherit border-2 hover:border-blue-100 mx-px hover:mx-0 hover:border-2 py-2.5 px-2 focus:mx-0 focus:border-2 focus:border-blue-100 focus:outline-0 pr-8"
+                        className="w-64 rounded border border-gray-100 border-inherit border-2 hover:border-blue-100 mx-px hover:mx-0 hover:border-2 py-2.5 px-2 focus:mx-0 focus:border-2 focus:border-blue-100 focus:outline-0 pr-8"
                         type="text"
                         name="delay" 
                         placeholder="delay in ms"
@@ -204,7 +204,7 @@ const Score = () => {
                     <div className="flex mt-2">
                         <div className="w-2/6"></div>
                         <button 
-                            className="bg-red-500 hover:bg-red-800 text-white font-bold py-2 px-4 rounded inline-flex items-center w-32"
+                            className="bg-red-500 hover:bg-red-800 text-white font-bold py-2 px-4 rounded inline-flex items-center w-64"
                             onClick={handleStop}
                         >
                             <Image className="filter-white" src="/static/Stop.svg" width="60" height="40" alt="Start" />
@@ -215,7 +215,7 @@ const Score = () => {
                     <div className="flex mt-2">
                         <div className="w-2/6"></div>
                         <button 
-                            className="bg-indigo-500 hover:bg-indigo-800 text-white font-bold py-2 px-4 rounded inline-flex items-center w-32"
+                            className="bg-indigo-500 hover:bg-indigo-800 text-white font-bold py-2 px-4 rounded inline-flex items-center w-64"
                             onClick={handleStart}
                         >
                             <Image className="filter-white" src="/static/Play.svg" width="30" height="30" alt="Start" />
@@ -223,21 +223,35 @@ const Score = () => {
                         </button>
                     </div>           
                 )}
-                <div className="flex mt-2">
+
+                {dataObj.dataArray.length > 0 ? (
+                    <div className="flex mt-2">
+                        <div className="w-2/6"></div>
+                        <button 
+                            className="bg-indigo-500 hover:bg-indigo-800 text-white font-bold py-2 px-4 rounded inline-flex items-center w-64"
+                            onClick={handleSend}
+                        >
+                            <Image className="filter-white" src="/static/Send.svg" width="30" height="30" alt="Start" />
+                            <span className="ml-4">SEND</span>
+                        </button>
+                        </div>
+                ) : (
+                    <div className="flex mt-2">
                     <div className="w-2/6"></div>
-                    <button 
-                        className="bg-indigo-500 hover:bg-indigo-800 text-white font-bold py-2 px-4 rounded inline-flex items-center w-32"
+                    <button disabled
+                        className="disabled:bg-red-500 disabled:shadow-none disabled:text-slate-500 disabled:border-slate-200 bg-indigo-500 hover:bg-indigo-800 text-white font-bold py-2 px-4 rounded inline-flex items-center w-64"
                         onClick={handleSend}
                     >
                         <Image className="filter-white" src="/static/Send.svg" width="30" height="30" alt="Start" />
-                        <span className="ml-6">SEND</span>
+                        <span className="ml-4">SEND</span>
                     </button>
-                </div>   
+                </div>           
+                ) }
   
                 <div>
                     <div className="flex mt-2">
-                        <div className="w-2/6 text-2xl text-right pr-5 text-gray-600">Result:</div>
-                        <div className="w-4/6 rounded border border-gray-100 border-inherit border-2 text-2xl text-gray-900">{pred}</div>
+                        <div className="w-2/6 text-2xl text-right pr-5 text-purple-600">Result:</div>
+                        <div className="w-64 text-2xl text-purple-600 rounded border border-gray-100 border-inherit border-2 hover:border-blue-100 mx-px hover:mx-0 hover:border-2 py-2 px-4 focus:mx-0 focus:border-2 focus:border-blue-100 focus:outline-0 pr-8">{pred}</div>
                     </div>
                 </div>
 

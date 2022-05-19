@@ -205,7 +205,7 @@ const Train = () => {
             <div className="flex mt-2 items-center">
                 <div className="w-2/6 text-right pr-5 text-gray-600">Delay:</div>
                 <input 
-                    className=" rounded border border-gray-100 border-inherit border-2 hover:border-blue-100 mx-px hover:mx-0 hover:border-2 py-2.5 px-2 focus:mx-0 focus:border-2 focus:border-blue-100 focus:outline-0 pr-8"
+                    className="w-64 rounded border border-gray-100 border-inherit border-2 hover:border-blue-100 mx-px hover:mx-0 hover:border-2 py-2.5 px-2 focus:mx-0 focus:border-2 focus:border-blue-100 focus:outline-0 pr-8"
                     type="text"
                     name="delay" 
                     placeholder="delay in ms"
@@ -218,7 +218,7 @@ const Train = () => {
                 <div className="w-2/6 text-right pr-5 text-gray-600">Figure:</div> 
                 <div className="mb-3 xl:w-96">
                 <select onChange={(e) => onFigureChange(e.target.value)} className="form-select appearance-none
-                    block w-full px-3 py-1.5 text-base font-normal
+                    block w-full px-3 py-1.5 text-base font-normal w-64
                     text-gray-700 bg-white bg-clip-padding bg-no-repeat
                     border border-solid border-gray-300 rounded transition ease-in-out 
                     m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Figure to train">
