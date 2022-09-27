@@ -25,9 +25,9 @@ export default function Home() {
   const [nodeRedUrl, setNodeRedUrl] = useState("https://node-red-fhbgld-2021-05-14.eu-de.mybluemix.net/score_motion");
   
   // WML Setup - if source == "WML"
-  const [cloudApiKey, setCloudApiKey] = useState('qPSIA1mip2TMdMh3Pq8HLgj-q4SUtkT5b8JcOAYjYep-');
+  const [cloudApiKey, setCloudApiKey] = useState('D5-GtcmW3Hm4Z3kp6QZXmqqnk-mbQiGVNGC9S2rLvDBy');
   const [cloudRegion, setCloudRegion] = useState('us-south');
-  const [deploymentId, setDeploymentId] = useState("54ff8c56-af10-4d6a-b548-5fb8059ac151");
+  const [deploymentId, setDeploymentId] = useState("fdf099a7-b31a-411f-a8a0-c2c1fdbff408");
 
   // defaults 
   const [sendOrientation, setSendOrientation] = useState(false);
