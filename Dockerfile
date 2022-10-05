@@ -11,7 +11,8 @@ FROM node:alpine AS builder
 WORKDIR /app
 COPY . .
 COPY --from=deps /app/node_modules ./node_modules
-RUN export NODE_OPTIONS=--openssl-legacy-provider && npm run build
+RUN export NODE_OPTIONS=--openssl-legacy-provider && npm run build 
+RUN npm cache clean --force
 
 # Production image, copy all the files and run next
 FROM node:alpine AS runner
